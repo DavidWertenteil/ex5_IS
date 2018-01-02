@@ -26,6 +26,7 @@ while string == "Bad password!":
     socket.send(a)
     strings = socket.recv(1024)
     e_t = time.time()
+
     if test[len(msg)] == '0':
         max_time = abs(s_t - e_t)
     print(max_time,"               " ,s_t - e_t)

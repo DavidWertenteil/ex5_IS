@@ -24,7 +24,7 @@ while string == "Bad password!":
 
     # Check receiving time
     s_t = time.time()
-    strings = socket.recv(1024)
+    strings = socket.recv(1024).decode('utf-8')
     e_t = time.time()
 
     if password[len(msg)] == '/':

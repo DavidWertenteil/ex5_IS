@@ -2,7 +2,7 @@ __author__ = 'David Wertenteil'
 import socket as sck
 import time
 
-BUFF_SIZE = 1024  # 4 KiB
+BUFF_SIZE = 1024
 
 
 def recvall(sock):

@@ -54,4 +54,4 @@ while message == "Bad password!":
 # Print the flag
 print(message)
 # print password
-print()
+print(password)

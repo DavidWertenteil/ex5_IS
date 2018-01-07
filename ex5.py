@@ -25,7 +25,7 @@ message = "Bad password!"
 password = ''
 max_time = 1
 
-while message == "Bad password!":
+while True:
     # Declaring a socket
     socket = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
     # Connecting to server
@@ -40,6 +40,10 @@ while message == "Bad password!":
     start_t = time.time()
     message = recvall(socket)
     end_t = time.time()
+    
+    # Received the flag
+    if message != "Bad password!":
+        break
 
     if check_pass[len(password)] == '/':  # Next character
         max_time = abs(start_t - end_t) + 0.05  # Margin of error

@@ -43,6 +43,7 @@ while True:
     
     # Received the flag
     if message != "Bad password!":
+        password = ''.join(check_pass)
         break
 
     if check_pass[len(password)] == '/':  # Next character

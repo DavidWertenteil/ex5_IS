@@ -57,6 +57,6 @@ while True:
     socket.close()
 
 # Print the flag
-print(message)
+print("The message: ", message)
 # print password
-print(password)
+print("The password: ", password)
